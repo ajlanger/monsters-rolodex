@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor() {
+    super();
+    
+    this.state = {
+      monsters: [
+        {
+          name: 'Frankenstein',
+          id: 'acds'
+        },
+        {
+          name: 'Dracula',
+          id: 'dfssdff'
+        },
+        {
+          name: 'Zombie',
+          id: '12ed'
+        },
+        {
+          name: 'Arnaud',
+          id: '12edf'
+        },
+      ]
+    };    
+  }
+
+  changeNameHandler = () => {
+    const name =  this.state.string === 'Hello Benoit' ? 'Hello Arnaud' : 'Hello Benoit';
+    this.setState({ string: name});
+  }
+
+
+  render() {
+    return (
+      <div className="App">
+        {
+          this.state.monsters.map(el => <h1 key={ el.id }>{ el.name }</h1>)
+        }
+      </div>
+    );
+  }
 }
 
 export default App;
