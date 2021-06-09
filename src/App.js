@@ -1,45 +1,28 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import { CardList } from "./components/card-list/card-list.component";
 
 class App extends Component {
   constructor() {
     super();
-    
+
     this.state = {
-      monsters: [
-        {
-          name: 'Frankenstein',
-          id: 'acds'
-        },
-        {
-          name: 'Dracula',
-          id: 'dfssdff'
-        },
-        {
-          name: 'Zombie',
-          id: '12ed'
-        },
-        {
-          name: 'Arnaud',
-          id: '12edf'
-        },
-      ]
-    };    
+      monsters: [],
+    };
   }
 
-  changeNameHandler = () => {
-    const name =  this.state.string === 'Hello Benoit' ? 'Hello Arnaud' : 'Hello Benoit';
-    this.setState({ string: name});
+  componentDidMount() {
+    // Mounting is when react puts our component on the page, renders it on DOM for the first time. When it does that, it calls that block of code that we wrote
+    fetch("http://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((users) => this.setState({ monsters: users }));
   }
-
 
   render() {
     return (
       <div className="App">
-        {
-          this.state.monsters.map(el => <h1 key={ el.id }>{ el.name }</h1>)
-        }
+        <CardList monsters={this.state.monsters}>
+        </CardList>
       </div>
     );
   }
