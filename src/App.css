@@ -40,3 +40,9 @@
 p {
   font-family: "Gill Sans", sans-serif;
 }
+
+h1 {
+  font-family: 'Bigelow Rules', cursive;
+  font-size: 72px;
+  color: #0ccac4;
+}
