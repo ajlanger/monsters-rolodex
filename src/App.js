@@ -19,7 +19,7 @@ class App extends Component {
 
   componentDidMount() {
     // Mounting is when react puts our component on the page, renders it on DOM for the first time. When it does that, it calls that block of code that we wrote
-    fetch("http://jsonplaceholder.typicode.com/users")
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((users) => this.setState({ monsters: users }));
   }
